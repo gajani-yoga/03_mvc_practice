@@ -13,6 +13,8 @@ app.get('/', (req, res) => {
     res.send({ message: 'Welcome to the Shark API'})
 })
 
+// localhost:3000/sharks -> app -> routers -> controllers -> models/Database
+
 //asking middleware to deal with routes
 app.use('/sharks', sharkRoutes)
 module.exports = app

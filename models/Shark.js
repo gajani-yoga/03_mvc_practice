@@ -1,6 +1,6 @@
 const sharksData = require('../data')
 
-// localhost:3000/sharks -> app -> routers -> controllers -> models/Database
+
 class Shark {
     constructor(data) {
         this.id = data.id
@@ -13,6 +13,16 @@ class Shark {
             return sharks
         } catch (error) {
             throw new Error('Error retrieving sharks')
+        }
+    }
+
+    static async findById(sharkId) {
+        try {
+            const sharkData = sharksData.find(shark => shark.id === sharkId)
+            console.log(sharkData)
+            return new Shark(sharkData)
+        } catch (error) {
+            throw new Error('Shark not found')
         }
     }
 }
