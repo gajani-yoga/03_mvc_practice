@@ -8,3 +8,6 @@
 - [x] DELETE /sharks/:id
 
 MVC: Model View Controller
+
+## Debugging FLOW
+localhost:3000/sharks -> app -> routers -> controllers -> models
