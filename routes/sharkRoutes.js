@@ -1,11 +1,9 @@
 const express = require('express')
 const router = express.Router()
 
-const sharks = require('../data')
+const sharksController = require('../controllers/sharksController')
 
 // localhost:3000/sharks -> app -> routers -> controllers -> models
-router.get('/', (req, res) => {
-    res.send(sharks)
-})
+router.get('/', sharksController.index)
 
 module.exports = router

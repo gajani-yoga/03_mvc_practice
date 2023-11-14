@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const logger = require('morgan'); //useful for tracking middleware
+const logger = require('morgan'); //useful for tracking middleware --> outputs verb, endpoint and status code
 
 const sharkRoutes = require('./routes/sharkRoutes')
 
