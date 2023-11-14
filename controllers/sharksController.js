@@ -1,7 +1,7 @@
-const sharks = require('../data')
+const Shark = require('../models/Shark')
 
-// localhost:3000/sharks -> app -> routers -> controllers -> models
-const index = (req, res) => {
+const index = async (req, res) => {
+    const sharks = await Shark.getAll() //only use await keyword inside an async function
     res.send(sharks)
 }
 
