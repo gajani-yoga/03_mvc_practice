@@ -45,6 +45,28 @@ class Shark {
             throw new Error(error)
         }
     }
-}
+
+    async update(data) {
+        const shark = sharksData.find(s => s.id === this.id)
+        if(shark.name) {
+            shark.name = data.name
+            return new Shark(shark)
+        } else {
+            throw new Error('Shark not found')
+        }
+        }
+    async destroy() {
+        const shark = sharksData.find(s => s.id === this.id)
+
+        if(shark) {
+            const sharInx = sharksData.indexOf(shark)
+            sharksData.splice(sharInx, 1)
+        } else {
+            throw new Error('Shark not found')
+        }
+    }
+    
+    }
+
 
 module.exports = Shark
