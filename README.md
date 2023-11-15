@@ -15,3 +15,4 @@ localhost:3000/sharks -> app -> routers -> controllers -> models
 ## Endpoints practice
 - action: index, verb: GET, endpoint: `/sharks`
 - action: show, verb: GET, endpoint: `/sharks/:id`
+- action: create, verb: POST, endpoint: `/sharks`

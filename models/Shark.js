@@ -25,6 +25,26 @@ class Shark {
             throw new Error('Shark not found')
         }
     }
+
+    static async create(data) {
+        // trying to create a shark
+        // we need to know the last id
+        // we need to check that the data is present
+        // to create shark, new shark(data)
+
+        try { // This paragraph of code will be done for us in database
+            let nextId
+            sharksData.length
+            ? nextId = sharksData.reduce((shark1, shark2) => shark1.id > shark2.id ? shark1 : shark2).id + 1
+            : nextId = 1
+
+            const newShark = new Shark({ id: nextId, name: data.name })
+            sharksData.push(newShark)
+            return newShark
+        } catch (error) {
+            throw new Error(error)
+        }
+    }
 }
 
 module.exports = Shark

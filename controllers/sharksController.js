@@ -16,7 +16,22 @@ const show = async (req, res) => {
     }
 }
 
+const create = async (req, res) => {
+    try {
+        console.log(req.body)
+        if(!req.body.name) {
+            throw new Error('You need a name to create a shark')
+        }
+
+        const newShark = await Shark.create(req.body)
+        res.status(201).send(newShark)
+    } catch (err) {
+        res.status(422).send({ error: err.message })
+    }
+}
+
 module.exports = {
     index,
-    show
+    show,
+    create
 }
