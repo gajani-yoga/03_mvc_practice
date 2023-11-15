@@ -28,34 +28,40 @@ const create = async (req, res) => {
     } catch (err) {
         res.status(422).send({ error: err.message })
     }
+}
 
-    const update = async (res, req) => {
-        if(!req.body.name) {
-            res.status(422).send({ error: 'You need to specify the name' })
-        }
+const update = async (req, res) => {
+    if(!req.body.name) {
+        res.status(422).send({ error: 'You need to specify the name' })
+    }
 
+    try {
+        const sharkId = parseInt(req.params.id)
+        const data = req.body
+
+        //sharkToUpdate is an instance
+        const sharkToUpdate = await Shark.findById(sharkId)
+        const updatedShark = await sharkToUpdate.update(data)
+        res.send(updatedShark)
+    } catch (err) {
+        res.status(404).send({ error: err.message })
+    }
+}
+
+    const destroy = async (req, res) => {
         try {
             const sharkId = parseInt(req.params.id)
-            const data = req.body
-            //sharkToUpdate is an instance
-            const sharkToUpdate = await Shark.findById(sharkId)
-            const updatedShark = await sharkToUpdate.update(data)
-            res.send(updatedShark)
-        } catch (err) {
+
+            //sharkToDelete is an instance
+            const sharkToDelete = await Shark.findById(sharkId)
+            await sharkToDelete.destroy
+            res.sendStatus(204)
+        } catch (error) {
             res.status(404).send({ error: err.message })
         }
     }
 
-    const destroy = async (res, req) => {
-        try {
-            const sharIdx = parseInt(req.params.id)
-            
-        } catch (error) {
-            
-        }
-    }
 
-}
 
 module.exports = {
     index,

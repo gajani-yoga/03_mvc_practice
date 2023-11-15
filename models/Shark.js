@@ -59,8 +59,8 @@ class Shark {
         const shark = sharksData.find(s => s.id === this.id)
 
         if(shark) {
-            const sharInx = sharksData.indexOf(shark)
-            sharksData.splice(sharInx, 1)
+            const sharkIdx = sharksData.indexOf(shark)
+            sharksData.splice(sharkIdx, 1) //only destroying one element at a time
         } else {
             throw new Error('Shark not found')
         }
